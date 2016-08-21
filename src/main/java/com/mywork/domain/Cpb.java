@@ -1,5 +1,7 @@
 package com.mywork.domain;
 
+import java.util.Date;
+
 public class Cpb {
     private Integer id;
 
@@ -74,6 +76,38 @@ public class Cpb {
     private Integer zhds;
 
     private Integer lh;
+
+    private Date sj;
+
+    private Integer qsbz;
+
+    private Integer qssz;
+
+    private Integer qsdz;
+
+    private Integer qsbs;
+
+    private Integer qszl;
+
+    private Integer zsbz;
+
+    private Integer zssz;
+
+    private Integer zsdz;
+
+    private Integer zsbs;
+
+    private Integer zszl;
+
+    private Integer hsbz;
+
+    private Integer hssz;
+
+    private Integer hsdz;
+
+    private Integer hsbs;
+
+    private Integer hszl;
 
     public Integer getId() {
         return id;
@@ -369,5 +403,133 @@ public class Cpb {
 
     public void setLh(Integer lh) {
         this.lh = lh;
+    }
+
+    public Date getSj() {
+        return sj;
+    }
+
+    public void setSj(Date sj) {
+        this.sj = sj;
+    }
+
+    public Integer getQsbz() {
+        return qsbz;
+    }
+
+    public void setQsbz(Integer qsbz) {
+        this.qsbz = qsbz;
+    }
+
+    public Integer getQssz() {
+        return qssz;
+    }
+
+    public void setQssz(Integer qssz) {
+        this.qssz = qssz;
+    }
+
+    public Integer getQsdz() {
+        return qsdz;
+    }
+
+    public void setQsdz(Integer qsdz) {
+        this.qsdz = qsdz;
+    }
+
+    public Integer getQsbs() {
+        return qsbs;
+    }
+
+    public void setQsbs(Integer qsbs) {
+        this.qsbs = qsbs;
+    }
+
+    public Integer getQszl() {
+        return qszl;
+    }
+
+    public void setQszl(Integer qszl) {
+        this.qszl = qszl;
+    }
+
+    public Integer getZsbz() {
+        return zsbz;
+    }
+
+    public void setZsbz(Integer zsbz) {
+        this.zsbz = zsbz;
+    }
+
+    public Integer getZssz() {
+        return zssz;
+    }
+
+    public void setZssz(Integer zssz) {
+        this.zssz = zssz;
+    }
+
+    public Integer getZsdz() {
+        return zsdz;
+    }
+
+    public void setZsdz(Integer zsdz) {
+        this.zsdz = zsdz;
+    }
+
+    public Integer getZsbs() {
+        return zsbs;
+    }
+
+    public void setZsbs(Integer zsbs) {
+        this.zsbs = zsbs;
+    }
+
+    public Integer getZszl() {
+        return zszl;
+    }
+
+    public void setZszl(Integer zszl) {
+        this.zszl = zszl;
+    }
+
+    public Integer getHsbz() {
+        return hsbz;
+    }
+
+    public void setHsbz(Integer hsbz) {
+        this.hsbz = hsbz;
+    }
+
+    public Integer getHssz() {
+        return hssz;
+    }
+
+    public void setHssz(Integer hssz) {
+        this.hssz = hssz;
+    }
+
+    public Integer getHsdz() {
+        return hsdz;
+    }
+
+    public void setHsdz(Integer hsdz) {
+        this.hsdz = hsdz;
+    }
+
+    public Integer getHsbs() {
+        return hsbs;
+    }
+
+    public void setHsbs(Integer hsbs) {
+        this.hsbs = hsbs;
+    }
+
+    public Integer getHszl() {
+        return hszl;
+    }
+
+    public void setHszl(Integer hszl) {
+        this.hszl = hszl;
     }
 }
