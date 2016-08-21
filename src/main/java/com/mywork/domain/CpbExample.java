@@ -1,6 +1,8 @@
 package com.mywork.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class CpbExample {
@@ -102,6 +104,32 @@ public class CpbExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -2331,6 +2359,966 @@ public class CpbExample {
 
         public Criteria andLhNotBetween(Integer value1, Integer value2) {
             addCriterion("lh not between", value1, value2, "lh");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjIsNull() {
+            addCriterion("sj is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjIsNotNull() {
+            addCriterion("sj is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjEqualTo(Date value) {
+            addCriterionForJDBCDate("sj =", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjNotEqualTo(Date value) {
+            addCriterionForJDBCDate("sj <>", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjGreaterThan(Date value) {
+            addCriterionForJDBCDate("sj >", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("sj >=", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjLessThan(Date value) {
+            addCriterionForJDBCDate("sj <", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("sj <=", value, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjIn(List<Date> values) {
+            addCriterionForJDBCDate("sj in", values, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjNotIn(List<Date> values) {
+            addCriterionForJDBCDate("sj not in", values, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("sj between", value1, value2, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSjNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("sj not between", value1, value2, "sj");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzIsNull() {
+            addCriterion("qsbz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzIsNotNull() {
+            addCriterion("qsbz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzEqualTo(Integer value) {
+            addCriterion("qsbz =", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzNotEqualTo(Integer value) {
+            addCriterion("qsbz <>", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzGreaterThan(Integer value) {
+            addCriterion("qsbz >", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("qsbz >=", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzLessThan(Integer value) {
+            addCriterion("qsbz <", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzLessThanOrEqualTo(Integer value) {
+            addCriterion("qsbz <=", value, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzIn(List<Integer> values) {
+            addCriterion("qsbz in", values, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzNotIn(List<Integer> values) {
+            addCriterion("qsbz not in", values, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzBetween(Integer value1, Integer value2) {
+            addCriterion("qsbz between", value1, value2, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbzNotBetween(Integer value1, Integer value2) {
+            addCriterion("qsbz not between", value1, value2, "qsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszIsNull() {
+            addCriterion("qssz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszIsNotNull() {
+            addCriterion("qssz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszEqualTo(Integer value) {
+            addCriterion("qssz =", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszNotEqualTo(Integer value) {
+            addCriterion("qssz <>", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszGreaterThan(Integer value) {
+            addCriterion("qssz >", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszGreaterThanOrEqualTo(Integer value) {
+            addCriterion("qssz >=", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszLessThan(Integer value) {
+            addCriterion("qssz <", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszLessThanOrEqualTo(Integer value) {
+            addCriterion("qssz <=", value, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszIn(List<Integer> values) {
+            addCriterion("qssz in", values, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszNotIn(List<Integer> values) {
+            addCriterion("qssz not in", values, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszBetween(Integer value1, Integer value2) {
+            addCriterion("qssz between", value1, value2, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsszNotBetween(Integer value1, Integer value2) {
+            addCriterion("qssz not between", value1, value2, "qssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzIsNull() {
+            addCriterion("qsdz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzIsNotNull() {
+            addCriterion("qsdz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzEqualTo(Integer value) {
+            addCriterion("qsdz =", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzNotEqualTo(Integer value) {
+            addCriterion("qsdz <>", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzGreaterThan(Integer value) {
+            addCriterion("qsdz >", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("qsdz >=", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzLessThan(Integer value) {
+            addCriterion("qsdz <", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzLessThanOrEqualTo(Integer value) {
+            addCriterion("qsdz <=", value, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzIn(List<Integer> values) {
+            addCriterion("qsdz in", values, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzNotIn(List<Integer> values) {
+            addCriterion("qsdz not in", values, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzBetween(Integer value1, Integer value2) {
+            addCriterion("qsdz between", value1, value2, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsdzNotBetween(Integer value1, Integer value2) {
+            addCriterion("qsdz not between", value1, value2, "qsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsIsNull() {
+            addCriterion("qsbs is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsIsNotNull() {
+            addCriterion("qsbs is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsEqualTo(Integer value) {
+            addCriterion("qsbs =", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsNotEqualTo(Integer value) {
+            addCriterion("qsbs <>", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsGreaterThan(Integer value) {
+            addCriterion("qsbs >", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("qsbs >=", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsLessThan(Integer value) {
+            addCriterion("qsbs <", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsLessThanOrEqualTo(Integer value) {
+            addCriterion("qsbs <=", value, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsIn(List<Integer> values) {
+            addCriterion("qsbs in", values, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsNotIn(List<Integer> values) {
+            addCriterion("qsbs not in", values, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsBetween(Integer value1, Integer value2) {
+            addCriterion("qsbs between", value1, value2, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQsbsNotBetween(Integer value1, Integer value2) {
+            addCriterion("qsbs not between", value1, value2, "qsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlIsNull() {
+            addCriterion("qszl is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlIsNotNull() {
+            addCriterion("qszl is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlEqualTo(Integer value) {
+            addCriterion("qszl =", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlNotEqualTo(Integer value) {
+            addCriterion("qszl <>", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlGreaterThan(Integer value) {
+            addCriterion("qszl >", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlGreaterThanOrEqualTo(Integer value) {
+            addCriterion("qszl >=", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlLessThan(Integer value) {
+            addCriterion("qszl <", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlLessThanOrEqualTo(Integer value) {
+            addCriterion("qszl <=", value, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlIn(List<Integer> values) {
+            addCriterion("qszl in", values, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlNotIn(List<Integer> values) {
+            addCriterion("qszl not in", values, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlBetween(Integer value1, Integer value2) {
+            addCriterion("qszl between", value1, value2, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQszlNotBetween(Integer value1, Integer value2) {
+            addCriterion("qszl not between", value1, value2, "qszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzIsNull() {
+            addCriterion("zsbz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzIsNotNull() {
+            addCriterion("zsbz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzEqualTo(Integer value) {
+            addCriterion("zsbz =", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzNotEqualTo(Integer value) {
+            addCriterion("zsbz <>", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzGreaterThan(Integer value) {
+            addCriterion("zsbz >", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("zsbz >=", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzLessThan(Integer value) {
+            addCriterion("zsbz <", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzLessThanOrEqualTo(Integer value) {
+            addCriterion("zsbz <=", value, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzIn(List<Integer> values) {
+            addCriterion("zsbz in", values, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzNotIn(List<Integer> values) {
+            addCriterion("zsbz not in", values, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzBetween(Integer value1, Integer value2) {
+            addCriterion("zsbz between", value1, value2, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbzNotBetween(Integer value1, Integer value2) {
+            addCriterion("zsbz not between", value1, value2, "zsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszIsNull() {
+            addCriterion("zssz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszIsNotNull() {
+            addCriterion("zssz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszEqualTo(Integer value) {
+            addCriterion("zssz =", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszNotEqualTo(Integer value) {
+            addCriterion("zssz <>", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszGreaterThan(Integer value) {
+            addCriterion("zssz >", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszGreaterThanOrEqualTo(Integer value) {
+            addCriterion("zssz >=", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszLessThan(Integer value) {
+            addCriterion("zssz <", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszLessThanOrEqualTo(Integer value) {
+            addCriterion("zssz <=", value, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszIn(List<Integer> values) {
+            addCriterion("zssz in", values, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszNotIn(List<Integer> values) {
+            addCriterion("zssz not in", values, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszBetween(Integer value1, Integer value2) {
+            addCriterion("zssz between", value1, value2, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsszNotBetween(Integer value1, Integer value2) {
+            addCriterion("zssz not between", value1, value2, "zssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzIsNull() {
+            addCriterion("zsdz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzIsNotNull() {
+            addCriterion("zsdz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzEqualTo(Integer value) {
+            addCriterion("zsdz =", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzNotEqualTo(Integer value) {
+            addCriterion("zsdz <>", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzGreaterThan(Integer value) {
+            addCriterion("zsdz >", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("zsdz >=", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzLessThan(Integer value) {
+            addCriterion("zsdz <", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzLessThanOrEqualTo(Integer value) {
+            addCriterion("zsdz <=", value, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzIn(List<Integer> values) {
+            addCriterion("zsdz in", values, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzNotIn(List<Integer> values) {
+            addCriterion("zsdz not in", values, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzBetween(Integer value1, Integer value2) {
+            addCriterion("zsdz between", value1, value2, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsdzNotBetween(Integer value1, Integer value2) {
+            addCriterion("zsdz not between", value1, value2, "zsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsIsNull() {
+            addCriterion("zsbs is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsIsNotNull() {
+            addCriterion("zsbs is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsEqualTo(Integer value) {
+            addCriterion("zsbs =", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsNotEqualTo(Integer value) {
+            addCriterion("zsbs <>", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsGreaterThan(Integer value) {
+            addCriterion("zsbs >", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("zsbs >=", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsLessThan(Integer value) {
+            addCriterion("zsbs <", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsLessThanOrEqualTo(Integer value) {
+            addCriterion("zsbs <=", value, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsIn(List<Integer> values) {
+            addCriterion("zsbs in", values, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsNotIn(List<Integer> values) {
+            addCriterion("zsbs not in", values, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsBetween(Integer value1, Integer value2) {
+            addCriterion("zsbs between", value1, value2, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZsbsNotBetween(Integer value1, Integer value2) {
+            addCriterion("zsbs not between", value1, value2, "zsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlIsNull() {
+            addCriterion("zszl is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlIsNotNull() {
+            addCriterion("zszl is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlEqualTo(Integer value) {
+            addCriterion("zszl =", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlNotEqualTo(Integer value) {
+            addCriterion("zszl <>", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlGreaterThan(Integer value) {
+            addCriterion("zszl >", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlGreaterThanOrEqualTo(Integer value) {
+            addCriterion("zszl >=", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlLessThan(Integer value) {
+            addCriterion("zszl <", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlLessThanOrEqualTo(Integer value) {
+            addCriterion("zszl <=", value, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlIn(List<Integer> values) {
+            addCriterion("zszl in", values, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlNotIn(List<Integer> values) {
+            addCriterion("zszl not in", values, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlBetween(Integer value1, Integer value2) {
+            addCriterion("zszl between", value1, value2, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andZszlNotBetween(Integer value1, Integer value2) {
+            addCriterion("zszl not between", value1, value2, "zszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzIsNull() {
+            addCriterion("hsbz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzIsNotNull() {
+            addCriterion("hsbz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzEqualTo(Integer value) {
+            addCriterion("hsbz =", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzNotEqualTo(Integer value) {
+            addCriterion("hsbz <>", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzGreaterThan(Integer value) {
+            addCriterion("hsbz >", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hsbz >=", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzLessThan(Integer value) {
+            addCriterion("hsbz <", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzLessThanOrEqualTo(Integer value) {
+            addCriterion("hsbz <=", value, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzIn(List<Integer> values) {
+            addCriterion("hsbz in", values, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzNotIn(List<Integer> values) {
+            addCriterion("hsbz not in", values, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzBetween(Integer value1, Integer value2) {
+            addCriterion("hsbz between", value1, value2, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbzNotBetween(Integer value1, Integer value2) {
+            addCriterion("hsbz not between", value1, value2, "hsbz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszIsNull() {
+            addCriterion("hssz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszIsNotNull() {
+            addCriterion("hssz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszEqualTo(Integer value) {
+            addCriterion("hssz =", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszNotEqualTo(Integer value) {
+            addCriterion("hssz <>", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszGreaterThan(Integer value) {
+            addCriterion("hssz >", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hssz >=", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszLessThan(Integer value) {
+            addCriterion("hssz <", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszLessThanOrEqualTo(Integer value) {
+            addCriterion("hssz <=", value, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszIn(List<Integer> values) {
+            addCriterion("hssz in", values, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszNotIn(List<Integer> values) {
+            addCriterion("hssz not in", values, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszBetween(Integer value1, Integer value2) {
+            addCriterion("hssz between", value1, value2, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsszNotBetween(Integer value1, Integer value2) {
+            addCriterion("hssz not between", value1, value2, "hssz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzIsNull() {
+            addCriterion("hsdz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzIsNotNull() {
+            addCriterion("hsdz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzEqualTo(Integer value) {
+            addCriterion("hsdz =", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzNotEqualTo(Integer value) {
+            addCriterion("hsdz <>", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzGreaterThan(Integer value) {
+            addCriterion("hsdz >", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hsdz >=", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzLessThan(Integer value) {
+            addCriterion("hsdz <", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzLessThanOrEqualTo(Integer value) {
+            addCriterion("hsdz <=", value, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzIn(List<Integer> values) {
+            addCriterion("hsdz in", values, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzNotIn(List<Integer> values) {
+            addCriterion("hsdz not in", values, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzBetween(Integer value1, Integer value2) {
+            addCriterion("hsdz between", value1, value2, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsdzNotBetween(Integer value1, Integer value2) {
+            addCriterion("hsdz not between", value1, value2, "hsdz");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsIsNull() {
+            addCriterion("hsbs is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsIsNotNull() {
+            addCriterion("hsbs is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsEqualTo(Integer value) {
+            addCriterion("hsbs =", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsNotEqualTo(Integer value) {
+            addCriterion("hsbs <>", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsGreaterThan(Integer value) {
+            addCriterion("hsbs >", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hsbs >=", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsLessThan(Integer value) {
+            addCriterion("hsbs <", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsLessThanOrEqualTo(Integer value) {
+            addCriterion("hsbs <=", value, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsIn(List<Integer> values) {
+            addCriterion("hsbs in", values, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsNotIn(List<Integer> values) {
+            addCriterion("hsbs not in", values, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsBetween(Integer value1, Integer value2) {
+            addCriterion("hsbs between", value1, value2, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsbsNotBetween(Integer value1, Integer value2) {
+            addCriterion("hsbs not between", value1, value2, "hsbs");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlIsNull() {
+            addCriterion("hszl is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlIsNotNull() {
+            addCriterion("hszl is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlEqualTo(Integer value) {
+            addCriterion("hszl =", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlNotEqualTo(Integer value) {
+            addCriterion("hszl <>", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlGreaterThan(Integer value) {
+            addCriterion("hszl >", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hszl >=", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlLessThan(Integer value) {
+            addCriterion("hszl <", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlLessThanOrEqualTo(Integer value) {
+            addCriterion("hszl <=", value, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlIn(List<Integer> values) {
+            addCriterion("hszl in", values, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlNotIn(List<Integer> values) {
+            addCriterion("hszl not in", values, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlBetween(Integer value1, Integer value2) {
+            addCriterion("hszl between", value1, value2, "hszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHszlNotBetween(Integer value1, Integer value2) {
+            addCriterion("hszl not between", value1, value2, "hszl");
             return (Criteria) this;
         }
     }

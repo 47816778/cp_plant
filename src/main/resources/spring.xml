@@ -25,11 +25,6 @@
 			</list>
 		</property>
 	</bean>
-	
-	<!-- 扫描文件（自动将controller层注入） -->
-	<context:component-scan base-package="web_app.com.ben">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<!-- 使用annotation注解方式配置事务 -->
