@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mywork.cpplant.dao.CpbMapper">
+  <resultMap id="BaseResultMap" type="com.mywork.cpplant.domain.Cpb">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="qh" jdbcType="VARCHAR" property="qh" />
+    <result column="wws" jdbcType="INTEGER" property="wws" />
+    <result column="qws" jdbcType="INTEGER" property="qws" />
+    <result column="bws" jdbcType="INTEGER" property="bws" />
+    <result column="sws" jdbcType="INTEGER" property="sws" />
+    <result column="gws" jdbcType="INTEGER" property="gws" />
+    <result column="hz" jdbcType="INTEGER" property="hz" />
+    <result column="kd" jdbcType="INTEGER" property="kd" />
+    <result column="hzwh" jdbcType="INTEGER" property="hzwh" />
+    <result column="js" jdbcType="INTEGER" property="js" />
+    <result column="os" jdbcType="INTEGER" property="os" />
+    <result column="zs" jdbcType="INTEGER" property="zs" />
+    <result column="hs" jdbcType="INTEGER" property="hs" />
+    <result column="wwds" jdbcType="INTEGER" property="wwds" />
+    <result column="qwds" jdbcType="INTEGER" property="qwds" />
+    <result column="bwds" jdbcType="INTEGER" property="bwds" />
+    <result column="swds" jdbcType="INTEGER" property="swds" />
+    <result column="gwds" jdbcType="INTEGER" property="gwds" />
+    <result column="wwdx" jdbcType="INTEGER" property="wwdx" />
+    <result column="qwdx" jdbcType="INTEGER" property="qwdx" />
+    <result column="bwdx" jdbcType="INTEGER" property="bwdx" />
+    <result column="swdx" jdbcType="INTEGER" property="swdx" />
+    <result column="gwdx" jdbcType="INTEGER" property="gwdx" />
+    <result column="wwjo" jdbcType="INTEGER" property="wwjo" />
+    <result column="qwjo" jdbcType="INTEGER" property="qwjo" />
+    <result column="bwjo" jdbcType="INTEGER" property="bwjo" />
+    <result column="swjo" jdbcType="INTEGER" property="swjo" />
+    <result column="gwjo" jdbcType="INTEGER" property="gwjo" />
+    <result column="ww012l" jdbcType="INTEGER" property="ww012l" />
+    <result column="qw012l" jdbcType="INTEGER" property="qw012l" />
+    <result column="bw012l" jdbcType="INTEGER" property="bw012l" />
+    <result column="sw012l" jdbcType="INTEGER" property="sw012l" />
+    <result column="gw012l" jdbcType="INTEGER" property="gw012l" />
+    <result column="zhdx" jdbcType="INTEGER" property="zhdx" />
+    <result column="zhds" jdbcType="INTEGER" property="zhds" />
+    <result column="lh" jdbcType="INTEGER" property="lh" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, qh, wws, qws, bws, sws, gws, hz, kd, hzwh, js, os, zs, hs, wwds, qwds, bwds, 
+    swds, gwds, wwdx, qwdx, bwdx, swdx, gwdx, wwjo, qwjo, bwjo, swjo, gwjo, ww012l, qw012l, 
+    bw012l, sw012l, gw012l, zhdx, zhds, lh
+  </sql>
+  <select id="selectByExample" parameterType="com.mywork.cpplant.domain.CpbExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cpb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cpb
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cpb
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mywork.cpplant.domain.CpbExample">
+    delete from cpb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mywork.cpplant.domain.Cpb">
+    insert into cpb (id, qh, wws, 
+      qws, bws, sws, gws, 
+      hz, kd, hzwh, js, 
+      os, zs, hs, wwds, 
+      qwds, bwds, swds, gwds, 
+      wwdx, qwdx, bwdx, swdx, 
+      gwdx, wwjo, qwjo, bwjo, 
+      swjo, gwjo, ww012l, 
+      qw012l, bw012l, sw012l, 
+      gw012l, zhdx, zhds, 
+      lh)
+    values (#{id,jdbcType=INTEGER}, #{qh,jdbcType=VARCHAR}, #{wws,jdbcType=INTEGER}, 
+      #{qws,jdbcType=INTEGER}, #{bws,jdbcType=INTEGER}, #{sws,jdbcType=INTEGER}, #{gws,jdbcType=INTEGER}, 
+      #{hz,jdbcType=INTEGER}, #{kd,jdbcType=INTEGER}, #{hzwh,jdbcType=INTEGER}, #{js,jdbcType=INTEGER}, 
+      #{os,jdbcType=INTEGER}, #{zs,jdbcType=INTEGER}, #{hs,jdbcType=INTEGER}, #{wwds,jdbcType=INTEGER}, 
+      #{qwds,jdbcType=INTEGER}, #{bwds,jdbcType=INTEGER}, #{swds,jdbcType=INTEGER}, #{gwds,jdbcType=INTEGER}, 
+      #{wwdx,jdbcType=INTEGER}, #{qwdx,jdbcType=INTEGER}, #{bwdx,jdbcType=INTEGER}, #{swdx,jdbcType=INTEGER}, 
+      #{gwdx,jdbcType=INTEGER}, #{wwjo,jdbcType=INTEGER}, #{qwjo,jdbcType=INTEGER}, #{bwjo,jdbcType=INTEGER}, 
+      #{swjo,jdbcType=INTEGER}, #{gwjo,jdbcType=INTEGER}, #{ww012l,jdbcType=INTEGER}, 
+      #{qw012l,jdbcType=INTEGER}, #{bw012l,jdbcType=INTEGER}, #{sw012l,jdbcType=INTEGER}, 
+      #{gw012l,jdbcType=INTEGER}, #{zhdx,jdbcType=INTEGER}, #{zhds,jdbcType=INTEGER}, 
+      #{lh,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mywork.cpplant.domain.Cpb">
+    insert into cpb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="qh != null">
+        qh,
+      </if>
+      <if test="wws != null">
+        wws,
+      </if>
+      <if test="qws != null">
+        qws,
+      </if>
+      <if test="bws != null">
+        bws,
+      </if>
+      <if test="sws != null">
+        sws,
+      </if>
+      <if test="gws != null">
+        gws,
+      </if>
+      <if test="hz != null">
+        hz,
+      </if>
+      <if test="kd != null">
+        kd,
+      </if>
+      <if test="hzwh != null">
+        hzwh,
+      </if>
+      <if test="js != null">
+        js,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="zs != null">
+        zs,
+      </if>
+      <if test="hs != null">
+        hs,
+      </if>
+      <if test="wwds != null">
+        wwds,
+      </if>
+      <if test="qwds != null">
+        qwds,
+      </if>
+      <if test="bwds != null">
+        bwds,
+      </if>
+      <if test="swds != null">
+        swds,
+      </if>
+      <if test="gwds != null">
+        gwds,
+      </if>
+      <if test="wwdx != null">
+        wwdx,
+      </if>
+      <if test="qwdx != null">
+        qwdx,
+      </if>
+      <if test="bwdx != null">
+        bwdx,
+      </if>
+      <if test="swdx != null">
+        swdx,
+      </if>
+      <if test="gwdx != null">
+        gwdx,
+      </if>
+      <if test="wwjo != null">
+        wwjo,
+      </if>
+      <if test="qwjo != null">
+        qwjo,
+      </if>
+      <if test="bwjo != null">
+        bwjo,
+      </if>
+      <if test="swjo != null">
+        swjo,
+      </if>
+      <if test="gwjo != null">
+        gwjo,
+      </if>
+      <if test="ww012l != null">
+        ww012l,
+      </if>
+      <if test="qw012l != null">
+        qw012l,
+      </if>
+      <if test="bw012l != null">
+        bw012l,
+      </if>
+      <if test="sw012l != null">
+        sw012l,
+      </if>
+      <if test="gw012l != null">
+        gw012l,
+      </if>
+      <if test="zhdx != null">
+        zhdx,
+      </if>
+      <if test="zhds != null">
+        zhds,
+      </if>
+      <if test="lh != null">
+        lh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="qh != null">
+        #{qh,jdbcType=VARCHAR},
+      </if>
+      <if test="wws != null">
+        #{wws,jdbcType=INTEGER},
+      </if>
+      <if test="qws != null">
+        #{qws,jdbcType=INTEGER},
+      </if>
+      <if test="bws != null">
+        #{bws,jdbcType=INTEGER},
+      </if>
+      <if test="sws != null">
+        #{sws,jdbcType=INTEGER},
+      </if>
+      <if test="gws != null">
+        #{gws,jdbcType=INTEGER},
+      </if>
+      <if test="hz != null">
+        #{hz,jdbcType=INTEGER},
+      </if>
+      <if test="kd != null">
+        #{kd,jdbcType=INTEGER},
+      </if>
+      <if test="hzwh != null">
+        #{hzwh,jdbcType=INTEGER},
+      </if>
+      <if test="js != null">
+        #{js,jdbcType=INTEGER},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=INTEGER},
+      </if>
+      <if test="zs != null">
+        #{zs,jdbcType=INTEGER},
+      </if>
+      <if test="hs != null">
+        #{hs,jdbcType=INTEGER},
+      </if>
+      <if test="wwds != null">
+        #{wwds,jdbcType=INTEGER},
+      </if>
+      <if test="qwds != null">
+        #{qwds,jdbcType=INTEGER},
+      </if>
+      <if test="bwds != null">
+        #{bwds,jdbcType=INTEGER},
+      </if>
+      <if test="swds != null">
+        #{swds,jdbcType=INTEGER},
+      </if>
+      <if test="gwds != null">
+        #{gwds,jdbcType=INTEGER},
+      </if>
+      <if test="wwdx != null">
+        #{wwdx,jdbcType=INTEGER},
+      </if>
+      <if test="qwdx != null">
+        #{qwdx,jdbcType=INTEGER},
+      </if>
+      <if test="bwdx != null">
+        #{bwdx,jdbcType=INTEGER},
+      </if>
+      <if test="swdx != null">
+        #{swdx,jdbcType=INTEGER},
+      </if>
+      <if test="gwdx != null">
+        #{gwdx,jdbcType=INTEGER},
+      </if>
+      <if test="wwjo != null">
+        #{wwjo,jdbcType=INTEGER},
+      </if>
+      <if test="qwjo != null">
+        #{qwjo,jdbcType=INTEGER},
+      </if>
+      <if test="bwjo != null">
+        #{bwjo,jdbcType=INTEGER},
+      </if>
+      <if test="swjo != null">
+        #{swjo,jdbcType=INTEGER},
+      </if>
+      <if test="gwjo != null">
+        #{gwjo,jdbcType=INTEGER},
+      </if>
+      <if test="ww012l != null">
+        #{ww012l,jdbcType=INTEGER},
+      </if>
+      <if test="qw012l != null">
+        #{qw012l,jdbcType=INTEGER},
+      </if>
+      <if test="bw012l != null">
+        #{bw012l,jdbcType=INTEGER},
+      </if>
+      <if test="sw012l != null">
+        #{sw012l,jdbcType=INTEGER},
+      </if>
+      <if test="gw012l != null">
+        #{gw012l,jdbcType=INTEGER},
+      </if>
+      <if test="zhdx != null">
+        #{zhdx,jdbcType=INTEGER},
+      </if>
+      <if test="zhds != null">
+        #{zhds,jdbcType=INTEGER},
+      </if>
+      <if test="lh != null">
+        #{lh,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mywork.cpplant.domain.CpbExample" resultType="java.lang.Long">
+    select count(*) from cpb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cpb
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.qh != null">
+        qh = #{record.qh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wws != null">
+        wws = #{record.wws,jdbcType=INTEGER},
+      </if>
+      <if test="record.qws != null">
+        qws = #{record.qws,jdbcType=INTEGER},
+      </if>
+      <if test="record.bws != null">
+        bws = #{record.bws,jdbcType=INTEGER},
+      </if>
+      <if test="record.sws != null">
+        sws = #{record.sws,jdbcType=INTEGER},
+      </if>
+      <if test="record.gws != null">
+        gws = #{record.gws,jdbcType=INTEGER},
+      </if>
+      <if test="record.hz != null">
+        hz = #{record.hz,jdbcType=INTEGER},
+      </if>
+      <if test="record.kd != null">
+        kd = #{record.kd,jdbcType=INTEGER},
+      </if>
+      <if test="record.hzwh != null">
+        hzwh = #{record.hzwh,jdbcType=INTEGER},
+      </if>
+      <if test="record.js != null">
+        js = #{record.js,jdbcType=INTEGER},
+      </if>
+      <if test="record.os != null">
+        os = #{record.os,jdbcType=INTEGER},
+      </if>
+      <if test="record.zs != null">
+        zs = #{record.zs,jdbcType=INTEGER},
+      </if>
+      <if test="record.hs != null">
+        hs = #{record.hs,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwds != null">
+        wwds = #{record.wwds,jdbcType=INTEGER},
+      </if>
+      <if test="record.qwds != null">
+        qwds = #{record.qwds,jdbcType=INTEGER},
+      </if>
+      <if test="record.bwds != null">
+        bwds = #{record.bwds,jdbcType=INTEGER},
+      </if>
+      <if test="record.swds != null">
+        swds = #{record.swds,jdbcType=INTEGER},
+      </if>
+      <if test="record.gwds != null">
+        gwds = #{record.gwds,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwdx != null">
+        wwdx = #{record.wwdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.qwdx != null">
+        qwdx = #{record.qwdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.bwdx != null">
+        bwdx = #{record.bwdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.swdx != null">
+        swdx = #{record.swdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.gwdx != null">
+        gwdx = #{record.gwdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwjo != null">
+        wwjo = #{record.wwjo,jdbcType=INTEGER},
+      </if>
+      <if test="record.qwjo != null">
+        qwjo = #{record.qwjo,jdbcType=INTEGER},
+      </if>
+      <if test="record.bwjo != null">
+        bwjo = #{record.bwjo,jdbcType=INTEGER},
+      </if>
+      <if test="record.swjo != null">
+        swjo = #{record.swjo,jdbcType=INTEGER},
+      </if>
+      <if test="record.gwjo != null">
+        gwjo = #{record.gwjo,jdbcType=INTEGER},
+      </if>
+      <if test="record.ww012l != null">
+        ww012l = #{record.ww012l,jdbcType=INTEGER},
+      </if>
+      <if test="record.qw012l != null">
+        qw012l = #{record.qw012l,jdbcType=INTEGER},
+      </if>
+      <if test="record.bw012l != null">
+        bw012l = #{record.bw012l,jdbcType=INTEGER},
+      </if>
+      <if test="record.sw012l != null">
+        sw012l = #{record.sw012l,jdbcType=INTEGER},
+      </if>
+      <if test="record.gw012l != null">
+        gw012l = #{record.gw012l,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhdx != null">
+        zhdx = #{record.zhdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhds != null">
+        zhds = #{record.zhds,jdbcType=INTEGER},
+      </if>
+      <if test="record.lh != null">
+        lh = #{record.lh,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cpb
+    set id = #{record.id,jdbcType=INTEGER},
+      qh = #{record.qh,jdbcType=VARCHAR},
+      wws = #{record.wws,jdbcType=INTEGER},
+      qws = #{record.qws,jdbcType=INTEGER},
+      bws = #{record.bws,jdbcType=INTEGER},
+      sws = #{record.sws,jdbcType=INTEGER},
+      gws = #{record.gws,jdbcType=INTEGER},
+      hz = #{record.hz,jdbcType=INTEGER},
+      kd = #{record.kd,jdbcType=INTEGER},
+      hzwh = #{record.hzwh,jdbcType=INTEGER},
+      js = #{record.js,jdbcType=INTEGER},
+      os = #{record.os,jdbcType=INTEGER},
+      zs = #{record.zs,jdbcType=INTEGER},
+      hs = #{record.hs,jdbcType=INTEGER},
+      wwds = #{record.wwds,jdbcType=INTEGER},
+      qwds = #{record.qwds,jdbcType=INTEGER},
+      bwds = #{record.bwds,jdbcType=INTEGER},
+      swds = #{record.swds,jdbcType=INTEGER},
+      gwds = #{record.gwds,jdbcType=INTEGER},
+      wwdx = #{record.wwdx,jdbcType=INTEGER},
+      qwdx = #{record.qwdx,jdbcType=INTEGER},
+      bwdx = #{record.bwdx,jdbcType=INTEGER},
+      swdx = #{record.swdx,jdbcType=INTEGER},
+      gwdx = #{record.gwdx,jdbcType=INTEGER},
+      wwjo = #{record.wwjo,jdbcType=INTEGER},
+      qwjo = #{record.qwjo,jdbcType=INTEGER},
+      bwjo = #{record.bwjo,jdbcType=INTEGER},
+      swjo = #{record.swjo,jdbcType=INTEGER},
+      gwjo = #{record.gwjo,jdbcType=INTEGER},
+      ww012l = #{record.ww012l,jdbcType=INTEGER},
+      qw012l = #{record.qw012l,jdbcType=INTEGER},
+      bw012l = #{record.bw012l,jdbcType=INTEGER},
+      sw012l = #{record.sw012l,jdbcType=INTEGER},
+      gw012l = #{record.gw012l,jdbcType=INTEGER},
+      zhdx = #{record.zhdx,jdbcType=INTEGER},
+      zhds = #{record.zhds,jdbcType=INTEGER},
+      lh = #{record.lh,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mywork.cpplant.domain.Cpb">
+    update cpb
+    <set>
+      <if test="qh != null">
+        qh = #{qh,jdbcType=VARCHAR},
+      </if>
+      <if test="wws != null">
+        wws = #{wws,jdbcType=INTEGER},
+      </if>
+      <if test="qws != null">
+        qws = #{qws,jdbcType=INTEGER},
+      </if>
+      <if test="bws != null">
+        bws = #{bws,jdbcType=INTEGER},
+      </if>
+      <if test="sws != null">
+        sws = #{sws,jdbcType=INTEGER},
+      </if>
+      <if test="gws != null">
+        gws = #{gws,jdbcType=INTEGER},
+      </if>
+      <if test="hz != null">
+        hz = #{hz,jdbcType=INTEGER},
+      </if>
+      <if test="kd != null">
+        kd = #{kd,jdbcType=INTEGER},
+      </if>
+      <if test="hzwh != null">
+        hzwh = #{hzwh,jdbcType=INTEGER},
+      </if>
+      <if test="js != null">
+        js = #{js,jdbcType=INTEGER},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=INTEGER},
+      </if>
+      <if test="zs != null">
+        zs = #{zs,jdbcType=INTEGER},
+      </if>
+      <if test="hs != null">
+        hs = #{hs,jdbcType=INTEGER},
+      </if>
+      <if test="wwds != null">
+        wwds = #{wwds,jdbcType=INTEGER},
+      </if>
+      <if test="qwds != null">
+        qwds = #{qwds,jdbcType=INTEGER},
+      </if>
+      <if test="bwds != null">
+        bwds = #{bwds,jdbcType=INTEGER},
+      </if>
+      <if test="swds != null">
+        swds = #{swds,jdbcType=INTEGER},
+      </if>
+      <if test="gwds != null">
+        gwds = #{gwds,jdbcType=INTEGER},
+      </if>
+      <if test="wwdx != null">
+        wwdx = #{wwdx,jdbcType=INTEGER},
+      </if>
+      <if test="qwdx != null">
+        qwdx = #{qwdx,jdbcType=INTEGER},
+      </if>
+      <if test="bwdx != null">
+        bwdx = #{bwdx,jdbcType=INTEGER},
+      </if>
+      <if test="swdx != null">
+        swdx = #{swdx,jdbcType=INTEGER},
+      </if>
+      <if test="gwdx != null">
+        gwdx = #{gwdx,jdbcType=INTEGER},
+      </if>
+      <if test="wwjo != null">
+        wwjo = #{wwjo,jdbcType=INTEGER},
+      </if>
+      <if test="qwjo != null">
+        qwjo = #{qwjo,jdbcType=INTEGER},
+      </if>
+      <if test="bwjo != null">
+        bwjo = #{bwjo,jdbcType=INTEGER},
+      </if>
+      <if test="swjo != null">
+        swjo = #{swjo,jdbcType=INTEGER},
+      </if>
+      <if test="gwjo != null">
+        gwjo = #{gwjo,jdbcType=INTEGER},
+      </if>
+      <if test="ww012l != null">
+        ww012l = #{ww012l,jdbcType=INTEGER},
+      </if>
+      <if test="qw012l != null">
+        qw012l = #{qw012l,jdbcType=INTEGER},
+      </if>
+      <if test="bw012l != null">
+        bw012l = #{bw012l,jdbcType=INTEGER},
+      </if>
+      <if test="sw012l != null">
+        sw012l = #{sw012l,jdbcType=INTEGER},
+      </if>
+      <if test="gw012l != null">
+        gw012l = #{gw012l,jdbcType=INTEGER},
+      </if>
+      <if test="zhdx != null">
+        zhdx = #{zhdx,jdbcType=INTEGER},
+      </if>
+      <if test="zhds != null">
+        zhds = #{zhds,jdbcType=INTEGER},
+      </if>
+      <if test="lh != null">
+        lh = #{lh,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mywork.cpplant.domain.Cpb">
+    update cpb
+    set qh = #{qh,jdbcType=VARCHAR},
+      wws = #{wws,jdbcType=INTEGER},
+      qws = #{qws,jdbcType=INTEGER},
+      bws = #{bws,jdbcType=INTEGER},
+      sws = #{sws,jdbcType=INTEGER},
+      gws = #{gws,jdbcType=INTEGER},
+      hz = #{hz,jdbcType=INTEGER},
+      kd = #{kd,jdbcType=INTEGER},
+      hzwh = #{hzwh,jdbcType=INTEGER},
+      js = #{js,jdbcType=INTEGER},
+      os = #{os,jdbcType=INTEGER},
+      zs = #{zs,jdbcType=INTEGER},
+      hs = #{hs,jdbcType=INTEGER},
+      wwds = #{wwds,jdbcType=INTEGER},
+      qwds = #{qwds,jdbcType=INTEGER},
+      bwds = #{bwds,jdbcType=INTEGER},
+      swds = #{swds,jdbcType=INTEGER},
+      gwds = #{gwds,jdbcType=INTEGER},
+      wwdx = #{wwdx,jdbcType=INTEGER},
+      qwdx = #{qwdx,jdbcType=INTEGER},
+      bwdx = #{bwdx,jdbcType=INTEGER},
+      swdx = #{swdx,jdbcType=INTEGER},
+      gwdx = #{gwdx,jdbcType=INTEGER},
+      wwjo = #{wwjo,jdbcType=INTEGER},
+      qwjo = #{qwjo,jdbcType=INTEGER},
+      bwjo = #{bwjo,jdbcType=INTEGER},
+      swjo = #{swjo,jdbcType=INTEGER},
+      gwjo = #{gwjo,jdbcType=INTEGER},
+      ww012l = #{ww012l,jdbcType=INTEGER},
+      qw012l = #{qw012l,jdbcType=INTEGER},
+      bw012l = #{bw012l,jdbcType=INTEGER},
+      sw012l = #{sw012l,jdbcType=INTEGER},
+      gw012l = #{gw012l,jdbcType=INTEGER},
+      zhdx = #{zhdx,jdbcType=INTEGER},
+      zhds = #{zhds,jdbcType=INTEGER},
+      lh = #{lh,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
