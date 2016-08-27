@@ -113,7 +113,7 @@ public class NumUtils {
 	public static void hs(Cpb c){
 		int hs = isIn(heNum, c.getWws()) +isIn(heNum, c.getQws()) +isIn(heNum, c.getBws())
 				+isIn(heNum, c.getSws())+isIn(heNum, c.getGws());
-		c.setHs(hs);;
+		c.setHs(hs);
 	}
 	
 	/**

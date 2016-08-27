@@ -37,9 +37,11 @@ public class InitCpPlantServiceImpl implements InitCpPlantService {
 //		criteria.andQhLike("2008%");
 		List<Cpb> list = cpbMapper.selectByExample(example);
 		for(Cpb c : list){
-			NumUtils.init(c);
-			c.setSj(new Date());
-			cpbMapper.updateByPrimaryKey(c);
+			if(c.getGws()!=null && c.getSws() != null && c.getBws() != null && c.getQws() != null && c.getWws()!=null){
+				NumUtils.init(c);
+				c.setSj(new Date());
+				cpbMapper.updateByPrimaryKey(c);
+			}
 		}
 	}
 	
