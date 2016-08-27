@@ -31,7 +31,6 @@ public class NumUtils {
 		js(c);
 		os(c);
 		zs(c);
-		hs(c);
 		ds(c);
 		dx(c);
 		qszt(c);

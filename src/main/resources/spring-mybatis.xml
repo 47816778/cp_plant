@@ -11,10 +11,10 @@
 	default-autowire="byName" default-lazy-init="true">
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/caipiao" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -23,6 +23,9 @@
 		<property name="mapperLocations" value="classpath:mapping/*Mapper.xml"></property>
 	</bean>
 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="com.mywork.dao" />
+	</bean>
 	<!-- 配置SQLSession模板 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
