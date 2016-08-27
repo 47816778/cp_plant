@@ -1,10 +1,9 @@
 package com.mywork.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.mywork.domain.Cpb;
 import com.mywork.domain.CpbExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CpbMapper {
     long countByExample(CpbExample example);
