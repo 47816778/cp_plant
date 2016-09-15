@@ -34,7 +34,7 @@ public class InitCpPlantServiceImpl implements InitCpPlantService {
 	public void initDatebase() {
 		CpbExample example = new CpbExample();
 //		Criteria criteria = example.createCriteria();
-//		criteria.andQhLike("2008%");
+//		criteria.andQhLike("20160223%");
 		List<Cpb> list = cpbMapper.selectByExample(example);
 		for(Cpb c : list){
 			if(c.getGws()!=null && c.getSws() != null && c.getBws() != null && c.getQws() != null && c.getWws()!=null){

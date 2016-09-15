@@ -39,7 +39,7 @@
     <result column="zhdx" jdbcType="INTEGER" property="zhdx" />
     <result column="zhds" jdbcType="INTEGER" property="zhds" />
     <result column="lh" jdbcType="INTEGER" property="lh" />
-    <result column="sj" jdbcType="DATE" property="sj" />
+    <result column="sj" jdbcType="TIMESTAMP" property="sj" />
     <result column="qsbz" jdbcType="INTEGER" property="qsbz" />
     <result column="qssz" jdbcType="INTEGER" property="qssz" />
     <result column="qsdz" jdbcType="INTEGER" property="qsdz" />

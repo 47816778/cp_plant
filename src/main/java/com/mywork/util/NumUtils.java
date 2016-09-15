@@ -23,21 +23,114 @@ public class NumUtils {
 	public static int[] twoNum = {2,5,8}; //2路
 	public static int[] bz = {000,111,222,333,444,555,666,777,888,999}; //豹子
 	public static String[] sz = {"012","123","234","345","456","567","678","789","890","019"}; //顺子
-	
+	public static int[] jiNum = {1,3,5,7,9}; //奇数
+	public static int[] ouNum = {2,4,6,8,0}; //偶数
 	
 	public static void init(Cpb c){
+		hz(c);
 		hs(c);
 		kd(c);
 		js(c);
 		os(c);
+		jo(c);
 		zs(c);
 		ds(c);
 		dx(c);
 		qszt(c);
 		zszt(c);
 		hszt(c);
+		lu012(c);
+		lh(c);
 	}
 	
+	/**
+	 * 龙虎和
+	 * @param c
+	 */
+	private static void lh(Cpb c) {
+		if(c.getWws()>c.getGws()){
+			c.setLh(1);
+		}else if(c.getWws() < c.getGws()){
+			c.setLh(2);
+		}else{
+			c.setLh(3);
+		}
+	}
+
+	/**
+	 * 判断012路
+	 * @param c
+	 */
+	private static void lu012(Cpb c) {
+		if( isIn(zeroNum, c.getWws()) > 0){
+			c.setWw012l(0);
+		}else if (isIn(oneNum, c.getWws()) > 0){
+			c.setWw012l(1);
+		}else{
+			c.setWw012l(2);
+		}
+		if( isIn(zeroNum, c.getQws()) > 0){
+			c.setQw012l(0);
+		}else if (isIn(oneNum, c.getQws()) > 0){
+			c.setQw012l(1);
+		}else{
+			c.setQw012l(2);
+		}
+		if( isIn(zeroNum, c.getBws()) > 0){
+			c.setBw012l(0);
+		}else if (isIn(oneNum, c.getBws()) > 0){
+			c.setBw012l(1);
+		}else{
+			c.setBw012l(2);
+		}
+		if( isIn(zeroNum, c.getSws()) > 0){
+			c.setSw012l(0);
+		}else if (isIn(oneNum, c.getSws()) > 0){
+			c.setSw012l(1);
+		}else{
+			c.setSw012l(2);
+		}
+		if( isIn(zeroNum, c.getGws()) > 0){
+			c.setGw012l(0);
+		}else if (isIn(oneNum, c.getGws()) > 0){
+			c.setGw012l(1);
+		}else{
+			c.setGw012l(2);
+		}
+	}
+
+	/**
+	 * 判断奇偶
+	 * @param c
+	 */
+	private static void jo(Cpb c) {
+		if( isIn(jiNum, c.getWws()) > 0){
+			c.setWwjo(1);
+		}else{
+			c.setWwjo(2);
+		}
+		if( isIn(jiNum, c.getQws()) > 0){
+			c.setQwjo(1);
+		}else{
+			c.setQwjo(2);
+		}
+		if( isIn(jiNum, c.getBws()) > 0){
+			c.setBwjo(1);
+		}else{
+			c.setBwjo(2);
+		}
+		if( isIn(jiNum, c.getSws()) > 0){
+			c.setSwjo(1);
+		}else{
+			c.setSwjo(2);
+		}
+		if( isIn(jiNum, c.getGws()) > 0){
+			c.setGwjo(1);
+		}else{
+			c.setGwjo(2);
+		}
+	}
+
 	/**
 	 * 设置和值
 	 * @param c
@@ -49,10 +142,12 @@ public class NumUtils {
 		int hz = c.getWws() + c.getQws()  + c.getBws() + c.getSws() + c.getGws();
 		c.setHz(hz);
 		c.setHzwh(hz%10);
+		c.setZhdx(hz>24?2:1);  //和值大小
+		c.setZhds( isIn(danNum, c.getHzwh()) > 0?1:2);  //和值单双
 	}
 	
 	/**
-	 * 设置和值
+	 * 设置跨度
 	 * @param c
 	 * <p>
 	 * author: <a href="mailto:taibai@ancun.com">xubin</a><br>
@@ -199,9 +294,10 @@ public class NumUtils {
 		}else if(isSz(c.getWws(),c.getQws(),c.getBws())){ //顺子
 			c.setQssz(1);
 		}else if(isDz(c.getWws(),c.getQws(),c.getBws())){ //对子
-			c.setQsdz(1);
+			c.setQssz(1);
 		}else if(isBs(c.getWws(),c.getQws(),c.getBws())){//半顺
 			c.setQsbs(1);
+			c.setQszl(1);
 		}else{//杂6
 			c.setQszl(1);
 		}
@@ -223,6 +319,7 @@ public class NumUtils {
 			c.setZsdz(1);
 		}else if(isBs(c.getQws(),c.getBws(),c.getSws())){//半顺
 			c.setZsbs(1);
+			c.setZszl(1);
 		}else{//杂6
 			c.setZszl(1);
 		}
@@ -244,6 +341,7 @@ public class NumUtils {
 			c.setHsdz(1);
 		}else if(isBs(c.getBws(),c.getSws(),c.getGws())){//半顺
 			c.setHsbs(1);
+			c.setHszl(1);
 		}else{//杂6
 			c.setHszl(1);
 		}
